@@ -36,7 +36,7 @@ Problems
 // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 
 // non recursive
-function fibonacci(num) {
+function fib(num) {
   let first = 0;
   let second = 0;
   let fib = 0;
@@ -64,13 +64,13 @@ function fibonacci(num) {
 //   }
 // }
 
-console.log(fibonacci(0)); // 0
-console.log(fibonacci(1)); // 1
-console.log(fibonacci(2));
-console.log(fibonacci(3));
-console.log(fibonacci(4));
-console.log(fibonacci(5));
-console.log(fibonacci(6));
-console.log(fibonacci(7));
-console.log(fibonacci(8));
-console.log(fibonacci(100));
+console.log(fib(0)); // 0
+console.log(fib(1)); // 1
+console.log(fib(2));
+console.log(fib(3));
+console.log(fib(4));
+console.log(fib(5));
+console.log(fib(6));
+console.log(fib(7));
+console.log(fib(8));
+console.log(fib(100));
