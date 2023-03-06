@@ -1,5 +1,8 @@
-function swapName(str) {
-  return str.split(' ').reverse().join(', ');
-}
-
-console.log(swapName('Joe Roberts'));    // "Roberts, Joe"
+console.log(isBalanced("What (is) this?") === true);
+console.log(isBalanced("What is) this?") === false);
+console.log(isBalanced("What (is this?") === false);
+console.log(isBalanced("((What) (is this))?") === true);
+console.log(isBalanced("((What)) (is this))?") === false);
+console.log(isBalanced("Hey!") === true);
+console.log(isBalanced(")Hey!(") === false);
+console.log(isBalanced("What ((is))) up(") === false);
