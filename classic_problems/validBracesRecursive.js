@@ -41,7 +41,7 @@ function validBraces(str) {
 
     if (!validBraces(str.slice(1, closingBraceIdx))) return false;
 
-    str = str.slice(closingBraceIdx);
+    str = str.slice(closingBraceIdx + 1);
   }
 
   return true;
@@ -74,14 +74,14 @@ function getClosingBrace(char) {
     case '[':
       return ']';
     case '{':
-      return '{';
+      return '}';
   }
 }
 
 // console.log(validBraces(''));
 console.log(validBraces("(){}[]")); // =>  True
-// console.log(validBraces("([{}])")); // =>  True
-// console.log(validBraces("(}")); //     =>  False
-// console.log(validBraces("[(])")); //   =>  False
-// console.log(validBraces("[({})](]")); //>  False
-// console.log(validBraces("(({{[[]]}}))")); // true
+console.log(validBraces("([{}])")); // =>  True
+console.log(validBraces("(}")); //     =>  False
+console.log(validBraces("[(])")); //   =>  False
+console.log(validBraces("[({})](]")); //>  False
+console.log(validBraces("(({{[[]]}}))")); // true
