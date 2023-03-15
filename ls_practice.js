@@ -1,1 +1,6 @@
-https://launchschool.com/exercises/3b0a4549
+// https://launchschool.com/exercises/68603298
+
+console.log(sumSquareDifference(3));      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+console.log(sumSquareDifference(10));     // 2640
+console.log(sumSquareDifference(1));      // 0
+console.log(sumSquareDifference(100));    // 25164150
