@@ -1,39 +1,46 @@
 /*
-You are going to be given an array of integers.
-Your job is to take that array and find an index N where the sum of the integers
-  to the left of N is equal to the sum of the integers to the right of N.
-If there is no index that would make this happen, return -1.
+8-2-22 Problem 1
+Problem Description
+Write a function to find the longest common prefix string
+amongst an array of strings.
 
-For example:
-Let's say you are given the array [1, 2, 3, 4, 3, 2, 1]:
-Your function will return the index 3, because at the 3rd position of the array,
-  the sum of left side of the index [1, 2, 3] and the sum of the right side of the
-  index [3, 2, 1] both equal 6.
+If there is no common prefix, return an empty string "".
 
-Another one:
-You are given the array [20, 10, -80, 10, 10, 15, 35]
-At index 0 the left side is []
-The right side is [10, -80, 10, 10, 15, 35]
-They both are equal to 0 when added. (Empty arrays are equal to 0 in this problem)
-Index 0 is the place where the left side and right side are equal.
+Example 1:
+Input: ["flower","flow","flight"]
+Output: "fl"
+
+Example 2:
+Input: ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+
+Note:
+All given inputs are in lowercase letters a-z.
 */
 
-function findEvenIndex(intArr) {
-  return intArr.findIndex((int, idx, arr) => {
-    let firstHalf = arr.slice(0, idx);
-    let secondHalf = arr.slice(idx + 1);
-    return getSumOfArr(firstHalf) === getSumOfArr(secondHalf);
-  });
+function commonPrefix(strArr) {
+  if (strArr.includes('')) return '';
+
+  let common = strArr[0];
+  let idx = 1;
+
+  while (idx < strArr.length) {
+    let currStr = strArr[idx];
+
+    while (!currStr.startsWith(common)) {
+      common = common.slice(0, common.length - 1);
+      if (common.length === 0) break;
+    }
+
+    ++idx;
+  }
+
+  return common;
 }
 
-function getSumOfArr(arr) {
-  return arr.reduce((sum, num) => sum + num, 0);
-}
-
-console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1]) === 3); // true
-console.log(findEvenIndex([1, 100, 50, -51, 1, 1]) === 1); // true
-console.log(findEvenIndex([1, 2, 3, 4, 5, 6]) === -1); // true
-console.log(findEvenIndex([20, 10, 30, 10, 10, 15, 35]) === 3); // true
-console.log(findEvenIndex([20, 10, -80, 10, 10, 15, 35]) === 0); // true
-console.log(findEvenIndex([10, -80, 10, 10, 15, 35, 20]) === 6); // true
-console.log(findEvenIndex([-1, -2, -3, -4, -3, -2, -1]) === 3); // true
+console.log(commonPrefix(["flower", "flow", "flight"]) === "fl"); // true
+console.log(commonPrefix(["dog", "racecar", "car"])  === ""); // true
+console.log(commonPrefix(["interspecies", "interstellar", "interstate"]) === "inters"); // true
+console.log(commonPrefix(["throne", "dungeon"]) === ""); // true
+console.log(commonPrefix(["throne", "throne"]) === "throne"); // true
