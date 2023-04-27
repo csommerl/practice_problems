@@ -1,79 +1,65 @@
 /*
-https://leetcode.com/problems/search-insert-position/
+https://leetcode.com/problems/climbing-stairs/
 
-input: array
+5
+[1,1,1,1,1]
+'11111'
 
-rules
-- nums contains distinct values sorted in ascending order.
-- if target is in array, return index of array
-- if target isn't in array, then return
-  - index of length of array, if it's bigger than last element
-  - index of 0 if it's smaller than first element
-  - index after the next smallest number and before next largest number
+[1,1,1,2]
+'1112'
+'1121'
+'1211'
+'2111'
 
-Algo
-- Set left to 0 and right to length - 1
-- Iterate while ?????
-  - set mid to (left + ~~((right - left) / 2))
-  - if target < midNum, set right to --mid
-  - if target > midNum, set left to ++ mid
-  - else return mid
-- 
+[1,2,2]
+'122'
+'212'
+'221'
 
-[1, 3, 5, 6]
+7
+[1,1,1,1,1,1,1] => 1
+'1111111'
 
-target 8, return 4
-l 0 = 1 , 2 = 5 , 3 = 6
-r 3 = 6 , 3 = 6 , 3 = 6
-m 1 = 3 , 2 = 5 , 3 = 6
-stop when l === m, return r + 1
+[1,1,1,1,1,2] => 6
+'111112'
+'111121'
+'111211'
+'112111'
+'121111'
+'211111'
 
-target 2, return 1
-l 0 = 1 , 0 = 1
-r 3 = 6 , 0 = 1
-m 1 = 3 , 0 = 1
-stop when l === m, return r + 1
+[1,1,1,2,2] => 11
+'11122'
+'12211'
+'22111'
+'21211'
+'21121'
+'12211'
+'12121'
+'12112'
+'11221'
+'11212'
 
-target 5, return 2
-l 0 = 1 , 2 = 5
-r 3 = 6 , 3 = 6
-m 1 = 3 , 2 = 5
-return mid when target === mid
+[1,2,2,2] => 4
+'1222'
+'2122'
+'2212'
+'2221'
 
-target 0, return 0
-left  0 = 1 , 0 = 1
-right 3 = 6 , 0 = 1
-mid   1 = 3 , 0 = 1
-return mid/left/right when they equal
+Algo 1
+sets = how many times divisible by 2 + remainder
+combinations of a set = 
+
+Algo 2
+get possible lengths: (num / 2) + 1
+get all possible combinations of 1s and 2s for each length
+get only those combinations that add up to num
 */
+function climbStairs(num) {
 
-let arr1 = [1, 3, 5, 6];
-console.log(searchInsert(arr1, 0)); // 0
-console.log(searchInsert(arr1, 5)); // 2
-console.log(searchInsert(arr1, 2)); // 1
-console.log(searchInsert(arr1, 8)); // 4
-
-function searchInsert(nums, target) {
-  let left = 0;
-  let right = nums.length - 1;
-
-  while (left < right) {
-    let mid = left + Math.floor((right - left) / 2);
-
-    if (target < nums[mid]) {
-      right = --mid;
-    } else if (target > nums[mid]) {
-      left = ++mid;
-    } else {
-      return mid;
-    }
-  }
-  console.log({left, right});
-  return target > nums[left] ? left + 1 : left;
 }
 
-let arr2 = [1, 3, 5, 6, 7];
-console.log(searchInsert(arr2, 0)); // 0
-console.log(searchInsert(arr2, 5)); // 2
-console.log(searchInsert(arr2, 2)); // 1
-console.log(searchInsert(arr2, 8)); // 5
+console.log(climbStairs(2)); // 2
+console.log(climbStairs(3)); // 3
+console.log(climbStairs(5)); // 8
+console.log(climbStairs(7)); // 21
